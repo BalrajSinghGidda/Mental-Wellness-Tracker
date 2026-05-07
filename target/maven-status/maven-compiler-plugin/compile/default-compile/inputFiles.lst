@@ -1,0 +1,11 @@
+/home/balraj/Mental-Wellness-Tracker/src/main/java/app/models/MoodEntryModel.java
+/home/balraj/Mental-Wellness-Tracker/src/main/java/app/ui/MoodEntryView.java
+/home/balraj/Mental-Wellness-Tracker/src/main/java/app/services/MoodService.java
+/home/balraj/Mental-Wellness-Tracker/src/main/java/app/auth/AuthController.java
+/home/balraj/Mental-Wellness-Tracker/src/main/java/app/utils/SecurityUtils.java
+/home/balraj/Mental-Wellness-Tracker/src/main/java/app/Main.java
+/home/balraj/Mental-Wellness-Tracker/src/main/java/app/ui/DashboardView.java
+/home/balraj/Mental-Wellness-Tracker/src/main/java/app/database/DatabaseManager.java
+/home/balraj/Mental-Wellness-Tracker/src/main/java/app/ui/RegistrationView.java
+/home/balraj/Mental-Wellness-Tracker/src/main/java/app/models/UserModel.java
+/home/balraj/Mental-Wellness-Tracker/src/main/java/app/ui/LoginView.java
