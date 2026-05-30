@@ -31,14 +31,36 @@ public class RegistrationView {
 
         Button registerButton = new Button("Register");
         registerButton.setOnAction(e -> {
-            boolean success = authController.registerUser(usernameField.getText(), emailField.getText(), passwordField.getText());
+            String username = usernameField.getText().trim();
+            String email = emailField.getText().trim();
+            String password = passwordField.getText();
+            
+            if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Please fill in all fields.", ButtonType.OK);
+                alert.showAndWait();
+                return;
+            }
+            
+            if (!email.contains("@") || !email.contains(".")) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter a valid email address.", ButtonType.OK);
+                alert.showAndWait();
+                return;
+            }
+            
+            if (password.length() < 4) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Password must be at least 4 characters long.", ButtonType.OK);
+                alert.showAndWait();
+                return;
+            }
+            
+            boolean success = authController.registerUser(username, email, password);
             if (success) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "Registration successful!", ButtonType.OK);
                 alert.showAndWait();
                 LoginView loginView = new LoginView(stage);
                 stage.setScene(loginView.createScene());
             } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Registration failed.", ButtonType.OK);
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Registration failed. Username or email may already exist.", ButtonType.OK);
                 alert.showAndWait();
             }
         });

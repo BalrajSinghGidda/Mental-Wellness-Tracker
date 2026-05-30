@@ -53,9 +53,16 @@ public class MoodEntryView {
 
         Button saveButton = new Button("Save");
         saveButton.setOnAction(e -> {
+            String selectedMood = moodComboBox.getValue();
+            if (selectedMood == null || selectedMood.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Please select a mood.", ButtonType.OK);
+                alert.showAndWait();
+                return;
+            }
+            
             boolean success = moodService.addMoodEntry(
                     user.getId(),
-                    moodComboBox.getValue(),
+                    selectedMood,
                     (int) stressSlider.getValue(),
                     (float) sleepSlider.getValue(),
                     (int) productivitySlider.getValue(),

@@ -50,11 +50,13 @@ public class DashboardView {
         // Center section
         TabPane tabPane = new TabPane();
         Tab entriesTab = new Tab("Mood Entries");
+        entriesTab.setClosable(false);
         table = new TableView<>();
         setupTable();
         entriesTab.setContent(table);
 
         Tab analyticsTab = new Tab("Analytics");
+        analyticsTab.setClosable(false);
         setupLineChart();
         analyticsTab.setContent(lineChart);
         

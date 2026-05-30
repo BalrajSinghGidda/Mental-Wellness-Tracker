@@ -29,7 +29,16 @@ public class LoginView {
 
         Button loginButton = new Button("Login");
         loginButton.setOnAction(e -> {
-            UserModel user = authController.loginUser(usernameField.getText(), passwordField.getText());
+            String username = usernameField.getText().trim();
+            String password = passwordField.getText();
+            
+            if (username.isEmpty() || password.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter both username and password.", ButtonType.OK);
+                alert.showAndWait();
+                return;
+            }
+            
+            UserModel user = authController.loginUser(username, password);
             if (user != null) {
                 // Navigate to Dashboard
                 DashboardView dashboard = new DashboardView(stage, user);

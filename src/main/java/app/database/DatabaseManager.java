@@ -19,7 +19,13 @@ public class DatabaseManager {
         try (Connection conn = getConnection();
              Statement stmt = conn.createStatement()) {
             String schema = new String(Files.readAllBytes(Paths.get("database/schema.sql")));
-            stmt.executeUpdate(schema);
+            String[] statements = schema.split(";");
+            for (String statement : statements) {
+                String trimmed = statement.trim();
+                if (!trimmed.isEmpty()) {
+                    stmt.execute(trimmed);
+                }
+            }
         } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
